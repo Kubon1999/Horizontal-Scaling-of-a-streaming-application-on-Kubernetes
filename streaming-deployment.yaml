@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: streaming-deployment
+  name: streaming-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streaming-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: streaming-deployment
+    spec:
+      containers:
+      - image: streaming-app:latest
+        name: streaming-app
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5050
+          name: http-web-svc 
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: streaming-deployment
+  name: streaming-deployment
+spec:
+  ports:
+  - port: 5050
+    protocol: TCP
+    targetPort: 5050
+  selector:
+    app: streaming-deployment
+  type: LoadBalancer
+status:
+  loadBalancer: {}
