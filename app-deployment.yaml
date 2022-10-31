@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: streaming-deployment
-  name: streaming-deployment
+    app: streaming-app
+  name: streaming-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: streaming-deployment
+      app: streaming-app
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: streaming-deployment
+        app: streaming-app
     spec:
       containers:
       - image: streaming-app:latest
@@ -23,8 +23,12 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 5050
-          name: http-web-svc 
-        resources: {}
+          name: http-web-svc
+        resources:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
 status: {}
 ---
 apiVersion: v1
@@ -32,15 +36,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: streaming-deployment
-  name: streaming-deployment
+    app: streaming-app
+  name: streaming-app
 spec:
   ports:
   - port: 5050
     protocol: TCP
     targetPort: 5050
   selector:
-    app: streaming-deployment
+    app: streaming-app
   type: LoadBalancer
 status:
   loadBalancer: {}
