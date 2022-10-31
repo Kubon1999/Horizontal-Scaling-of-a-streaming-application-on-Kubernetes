@@ -1,6 +1,6 @@
 # kubernetes horizontal scaling example
 #### Description
-This repo is an example of horizontal scaling for streaming application with Kubernetes.
+This repo is an example of horizontal scaling for streaming application in Kubernetes.
 
 #### Prequisities
 [Install minikube](https://minikube.sigs.k8s.io/docs/start/)
@@ -52,7 +52,7 @@ $ ./test.sh
 ```shell
 $ kubectl get hpa streaming-app --watch
 ```
-3. You should get results similiar to this
+3. You should get results similar to this
 ```shell
 # Note that default duration of the cooldown delay is 5 minutes
 $ kubectl get hpa streaming-app --watch
