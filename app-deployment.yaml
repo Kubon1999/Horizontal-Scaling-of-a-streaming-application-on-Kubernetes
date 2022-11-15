@@ -1,3 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: uiam
+  labels:
+    name: uiam
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,6 +12,7 @@ metadata:
   labels:
     app: streaming-app
   name: streaming-app
+  namespace: uiam
 spec:
   replicas: 1
   selector:
@@ -38,11 +46,12 @@ metadata:
   labels:
     app: streaming-app
   name: streaming-app
+  namespace: uiam
 spec:
   ports:
-  - port: 5050
+  - port: 8000
     protocol: TCP
-    targetPort: 5050
+    targetPort: 8000
   selector:
     app: streaming-app
   type: LoadBalancer
