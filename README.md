@@ -67,3 +67,8 @@ streaming-app   Deployment/streaming-app   0%/50%    1         10        7      
 streaming-app   Deployment/streaming-app   0%/50%    1         10        7          51m
 streaming-app   Deployment/streaming-app   0%/50%    1         10        1          52m
 ```
+
+#### Link to mp4 file
+https://file-examples.com/storage/fe04183d33637128a9c93a7/2017/04/file_example_MP4_1920_18MG.mp4
+put it inside app folder
+
